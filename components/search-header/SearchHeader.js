@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { MicrophoneIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import Avatar from '../Avatar';
+import HeaderOptions from './HeaderOptions';
 
 function SearchHeader() {
   const router = useRouter();
@@ -47,6 +48,7 @@ function SearchHeader() {
         </form>
         <Avatar className='ml-auto' url='/user-image.jpg' />
       </div>
+      <HeaderOptions />
     </header>
   );
 }
