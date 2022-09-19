@@ -1,7 +1,7 @@
 import { Squares2X2Icon } from '@heroicons/react/24/solid';
-import Avatar from '../components/Avatar';
+import Avatar from './Avatar';
 
-function Header() {
+function HomeHeader() {
   return (
     <header className="flex w-full p-5 justify-between text-sm text-gray-700">
       <div className="flex space-x-4 items-center">
@@ -19,4 +19,4 @@ function Header() {
   )
 }
 
-export default Header;
+export default HomeHeader;
