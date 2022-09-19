@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import SearchHeader from '../components/search-header/SearchHeader';
+import SearchResults from '../components/SearchResults';
 import { dummyData } from '../data';
 
 function Search({ results }) {
@@ -16,6 +17,7 @@ function Search({ results }) {
       </Head>
 
       <SearchHeader />
+      <SearchResults results={results} />
     </div>
   );
 }
