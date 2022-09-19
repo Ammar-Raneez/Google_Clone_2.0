@@ -31,7 +31,7 @@ export async function getServerSideProps(context) {
   const data = useDummyData
     ? dummyData
     : await fetch(
-      `https://${process.env.GOOGLE_SEARCH_URL}/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`
+      `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`
     ).then((response) => response.json());
 
   // Inject the results prop into the search page's props
