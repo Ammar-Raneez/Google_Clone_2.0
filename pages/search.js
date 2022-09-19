@@ -1,9 +1,12 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import SearchHeader from '../components/search-header/SearchHeader';
+import { dummyData } from '../data';
 
-function Search() {
+function Search({ results }) {
   const router = useRouter();
+
+  console.log(results);
 
   return (
     <div>
@@ -18,3 +21,21 @@ function Search() {
 }
 
 export default Search;
+
+export async function getServerSideProps(context) {
+  const useDummyData = true;
+  const startIndex = context.query.start || '0';
+
+  const data = useDummyData
+    ? dummyData
+    : await fetch(
+      `https://${process.env.GOOGLE_SEARCH_URL}/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`
+    ).then((response) => response.json());
+
+  // Inject the results prop into the search page's props
+  return {
+    props: {
+      results: data,
+    },
+  };
+}
